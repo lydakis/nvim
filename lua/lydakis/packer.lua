@@ -4,7 +4,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    -- Packer can manage itself
+    --true Packer can manage itself
     use 'wbthomason/packer.nvim'
 
     use {
@@ -16,12 +16,30 @@ return require('packer').startup(function(use)
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use 'Mofiqul/vscode.nvim'
     use 'shaunsingh/solarized.nvim'
+    use { "ellisonleao/gruvbox.nvim" }
 
     use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
     use 'nvim-treesitter/playground'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
     use 'github/copilot.vim'
+
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional
+        },
+        config = function()
+            require("nvim-tree").setup {}
+        end
+    }
+
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
